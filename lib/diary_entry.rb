@@ -17,7 +17,8 @@ class DiaryEntry
     return @contents.count(" ") +1
   end
 
-  def reading_time(wpm) 
+  def reading_time(wpm)
+    fail "WPM must be greater than zero." unless wpm.positive?
     return (count_words / wpm.to_f).ceil
 
     # wpm is an integer representing

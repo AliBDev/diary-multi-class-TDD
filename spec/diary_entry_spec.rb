@@ -25,7 +25,10 @@ RSpec.describe DiaryEntry do
   end
 
   describe "#reading_time" do
-  # Remember the case where wpm is 0
+    it "fails if the wm is zero" do
+      diary_entry = DiaryEntry.new("my_title", "hello world")
+      expect { diary_entry.reading_time(0) }.to raise_error "WPM must be greater than zero."
+    end
 
     it "returns zero if contents are empty" do
       diary_entry = DiaryEntry.new("my_title", "")
